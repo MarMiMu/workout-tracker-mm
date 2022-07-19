@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-screen-md mx-auto px-4 py-10">
+  <div class="max-w-4xl mx-auto px-4 py-10">
     <!-- App Message -->
     <div
       v-if="statusMsg || errorMsg"
@@ -209,9 +209,7 @@
               <p v-else>{{ item.weight }}</p>
             </div>
             <div class="flex flex-1 flex-col">
-              <label for="notes" class="mb-1 text-sm text-wt-blue"
-                >Weight (LB's)</label
-              >
+              <label for="notes" class="mb-1 text-sm text-wt-blue">Notes</label>
               <textarea
                 name="notes"
                 id="notes"
@@ -219,6 +217,7 @@
                 rows="5"
                 class="p-2 w-full text-gray-500 focus:outline-none"
                 v-if="edit"
+                v-model="item.notes"
               ></textarea>
               <p v-else>{{ item.notes }}</p>
             </div>
@@ -430,8 +429,8 @@ export default {
     // Add exercise
     const addExercise = () => {
       if (
-        data.value.workoutType === "strength" ||
-        data.value.workoutType === "hypertrophy"
+        data.value.workoutType === "Strength" ||
+        data.value.workoutType === "Hypertrophy"
       ) {
         data.value.exercises.push({
           id: uid(),
