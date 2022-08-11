@@ -28,7 +28,7 @@
           w-1/2
           h-full
           translate-x-full
-          z-5
+          z-10
           transition-transform
           duration-500
           ease-in-out

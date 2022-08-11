@@ -113,13 +113,25 @@ export default {
 
     // Get data
     const getData = async () => {
+      let indexes = [];
       try {
         const { data: workouts, error } = await supabase
           .from("workouts")
           .select("*");
         if (error) throw error;
-        data.value = workouts;
-        data.value = data.value.reverse();
+        // data.value = workouts;
+        console.log(workouts);
+        workouts.forEach((item) => indexes.push(item.id));
+        indexes = indexes.sort().reverse();
+        indexes.forEach((index) => {
+          workouts.forEach((item) => {
+            if (item.id === index) {
+              data.value.push(item);
+            }
+          });
+        });
+        console.log(data.value);
+        // test.sort().forEach((item) => data.value.push(workouts[item]));
         dataLoaded.value = true;
       } catch (error) {
         console.warn(error.message);
